@@ -4,7 +4,8 @@ require_once __DIR__ . '/../models/News.php';
 class NewsController extends Controller
 {
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 
 		$this->model = new News;
@@ -12,11 +13,10 @@ class NewsController extends Controller
 
 	function index()
 	{
-		$data = $this->model->getAll();
-		$this->view->generate('mainPage.php',$data);
+		$news = $this->model->getAll();
+		$lastNews = $this->model->getLast();
+		$this->view->generate('mainPage.php', ['news' => $news, 'lastNews' => $lastNews[0] ?? null]);
 	}
 
-	function show($id){
-
-	}
+	function show($id) {}
 }
