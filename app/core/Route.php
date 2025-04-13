@@ -6,6 +6,7 @@
 		public function __construct()
 		{
 			$this->add('/', 'NewsController', 'index');
+			$this->add('/page/(\d+)', 'NewsController', 'index');
 		}
 
 		public function add($url, $controller, $method)
@@ -22,15 +23,23 @@
 			$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 			foreach ($this->routes as $route => $params) {
-				if ($route === $url) {
+				if (preg_match('#^' . $route . '$#', $url, $matches)) {
 					$controllerFile = './app/controllers/' . $params['controller'] . '.php';
 
 					require_once $controllerFile;
 					$controller = new $params['controller']();
-					$controller->{$params['method']}();
+					if (isset($matches[1]))
+						$controller->{$params['method']}($matches[1]);
+					else
+						$controller->{$params['method']}();
+
 					return;
 				}
 			}
+
+			header("HTTP/1.0 404 Not Found");
+			echo '404 Page Not Found';
+			exit;
 		}
 	}
 	?>

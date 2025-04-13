@@ -69,34 +69,33 @@
 
 /* last-news */
 .last-news {
+	margin-top: -1px;
 	/* height: 646px; */
 	min-height: clamp(25rem, 21.572rem + 15.67vw, 40.375rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 
-    color: #fff;
+	color: #fff;
 }
 
 .last-news__inner {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
 
-.last-news__title{
-    font-size: clamp(2.5rem, 2.166rem + 1.53vw, 4rem);
-line-height: 1.4em;
+.last-news__title {
+	font-size: clamp(2.5rem, 2.166rem + 1.53vw, 4rem);
+	line-height: 1.4em;
 }
 
-.last-news__text p{
-    font-size: clamp(1.375rem, 1.236rem + 0.64vw, 2rem);
-line-height: 1.6em;
+.last-news__text p {
+	font-size: clamp(1.375rem, 1.236rem + 0.64vw, 2rem);
+	line-height: 1.6em;
 }
-
-
 
 /* news-section */
 .news-section {
@@ -195,10 +194,66 @@ line-height: 1.6em;
 }
 
 /* ============================= */
+/* PAGINATION */
+
+.pagination {
+	align-self: flex-end;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+.pagination__link {
+	display: flex;
+	align-items: center;
+	padding: 16px 23px;
+
+	border-radius: 50px;
+	border: 2px solid rgb(132, 24, 68);
+
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 22px;
+	color: rgb(132, 24, 68);
+}
+
+.pagination__link.active,
+.pagination__link:hover {
+	background-color: rgb(132, 24, 68);
+	color: #fff;
+}
+
+.pagination__link.active .pagination__link__svg,
+.pagination__link:hover .pagination__link__svg {
+	fill: #fff;
+}
+
+.pagination__link_arrow {
+	padding-left: 41px;
+	padding-right: 41px;
+}
+.pagination__link__svg {
+	width: 17px;
+	height: 13px;
+	fill: rgb(132, 24, 68);
+
+	transition: 0.3s;
+}
+
+.pagination__link__svg_reverse {
+	transform: scaleX(-1);
+}
+
+/* ============================= */
 /* Media */
 
 @media (max-width: 900px) {
 	.news-item {
 		width: 100%;
+	}
+}
+
+@media (max-width: 400px) {
+	.pagination {
+		gap: 10px;
 	}
 }

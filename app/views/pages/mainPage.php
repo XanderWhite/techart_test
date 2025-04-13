@@ -1,9 +1,9 @@
 <?php if (isset($lastNews)) : ?>
-    <div class="last-news" style="background: url('./assets/images/<?= $lastNews->image?>') no-repeat center / cover;">
-        <div class="last-news__inner container" >
+    <div class="last-news" style="background: url('/assets/images/<?= $lastNews->image ?>') no-repeat center / cover;">
+        <div class="last-news__inner container">
             <h2 class="last-news__title"><?= $lastNews->title ?></h2>
             <div class="last-news__text"><?= $lastNews->announce ?></div>
-                   </div>
+        </div>
     </div>
 <?php endif; ?>
 
@@ -27,6 +27,29 @@
             </article>
         <?php endforeach; ?>
     </div>
-    </div>
-    <div class="pagination"></div>
+
+    <?php if (isset($pagination)) : ?>
+        <div class="pagination">
+            <?php if ($pagination->getPrevious()): ?>
+                <a class="pagination__link pagination__link_arrow" href="/page/<?= $pagination->getPrevious() ?>">
+                <svg class="pagination__link__svg pagination__link__svg_reverse" viewBox="0 0 16.763 13.322" ><path d="M13.34 5.66 9.39 1.71a.99.99 0 0 1 0-1.42.996.996 0 0 1 1.41 0l5.66 5.66c.4.39.4 1.02 0 1.41l-5.66 5.66c-.39.4-1.01.4-1.41 0-.4-.4-.4-1.02 0-1.41l3.95-3.95H1c-.57 0-1-.44-1-1s.43-1 1-1h12.34Z"/></svg>
+                </a>
+            <?php endif; ?>
+
+            <?php foreach ($pagination->getPages() as $pageNumber): ?>
+                <?php if ($pageNumber == $pagination->getCurrent()): ?>
+                    <span class="pagination__link active"><?= $pageNumber ?></span>
+                <?php else: ?>
+                    <a class="pagination__link" href="/page/<?= $pageNumber ?>"><?= $pageNumber ?></a>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <?php if ($pagination->getNext()): ?>
+                <a class="pagination__link pagination__link_arrow" href="/page/<?= $pagination->getNext() ?>">
+                <svg class="pagination__link__svg" viewBox="0 0 16.763 13.322" ><path d="M13.34 5.66 9.39 1.71a.99.99 0 0 1 0-1.42.996.996 0 0 1 1.41 0l5.66 5.66c.4.39.4 1.02 0 1.41l-5.66 5.66c-.39.4-1.01.4-1.41 0-.4-.4-.4-1.02 0-1.41l3.95-3.95H1c-.57 0-1-.44-1-1s.43-1 1-1h12.34Z"/></svg>
+                </a>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
 </section>

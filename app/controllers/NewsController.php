@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/News.php';
+require_once __DIR__ . '/../core/Pagination.php';
 
 class NewsController extends Controller
 {
@@ -11,11 +12,17 @@ class NewsController extends Controller
 		$this->model = new News;
 	}
 
-	function index()
+	function index($page = 1)
 	{
-		$news = $this->model->getAll();
+		$limit = 4;
+		$offset = ($page - 1) * $limit;
+		$news = $this->model->getNews($limit, $offset);
+		$totalNews = $this->model->getTotalNews();
+		$totalPages = ceil($totalNews / $limit);
 		$lastNews = $this->model->getLast();
-		$this->view->generate('mainPage.php', ['news' => $news, 'lastNews' => $lastNews[0] ?? null]);
+		$pagination = new Pagination($page, $totalPages);
+
+		$this->view->generate('mainPage.php', ['news' => $news, 'lastNews' => $lastNews[0] ?? null, 'pagination' => $pagination]);
 	}
 
 	function show($id) {}
