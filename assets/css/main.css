@@ -17,6 +17,10 @@
 	flex-direction: column;
 }
 
+.svg-reverse {
+	transform: scaleX(-1);
+}
+
 /* ============================= */
 /* HEADER */
 
@@ -126,7 +130,8 @@
 	gap: 30px;
 }
 
-.news-item:hover .news-item__title {
+.news-item:hover .news-item__title,
+.news-item__title.active {
 	color: rgb(132, 24, 68);
 }
 
@@ -142,9 +147,12 @@
 	line-height: 22px;
 }
 
-.news-item__title {
+.news-item__title,
+.news-item__title p {
+	font-family: "OpenSans-SemiBold";
 	font-size: 32px;
 	line-height: 44px;
+	font-weight: 600;
 
 	transition: 0.3s;
 }
@@ -210,6 +218,7 @@
 	border-radius: 50px;
 	border: 2px solid rgb(132, 24, 68);
 
+	font-family: "OpenSans-SemiBold";
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 22px;
@@ -239,12 +248,80 @@
 	transition: 0.3s;
 }
 
-.pagination__link__svg_reverse {
-	transform: scaleX(-1);
+/* ============================= */
+/* DETAIL-PAGE */
+
+/* crumbs */
+
+.crumbs {
+	/* margin-top: 72.75px; */
+    margin-top: clamp(1.875rem, 1.279rem + 2.72vw, 4.547rem);
+	margin-bottom: 21.86px;
+	display: flex;
+	gap: 10px;
+
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 22px;
+}
+.crumbs__item.active {
+	color: #6c6e7b;
+}
+
+/* news-detail-section */
+.news-detail-section {
+	display: flex;
+	flex-direction: column;
+	gap: 63px;
+}
+
+.news-detail-section__title {
+	/* font-size: 64px; */
+    font-size: clamp(2.5rem, 2.166rem + 1.53vw, 4rem);
+	line-height: 1.4em;
+}
+
+.news-detail-section__content {
+	display: flex;
+	gap: 40px;
+    align-items: center;
+	/* margin-bottom: 136px; */
+    margin-bottom: clamp(3.75rem, 2.691rem + 4.84vw, 8.5rem);
+}
+
+.news-detail-section__content__block {
+	width: calc((100% - 40px) / 2);
+}
+
+.news-detail-section__image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
 }
 
 /* ============================= */
 /* Media */
+
+@media (max-width: 1600px) {
+    .news-detail-section__content__block{
+        width: auto;
+    }
+
+	.news-detail-section__content {
+		flex-direction: column-reverse;
+        	}
+
+            .news-detail-section__image{
+                max-width: 700px;
+                max-height: 700px;
+            }
+}
 
 @media (max-width: 900px) {
 	.news-item {

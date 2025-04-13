@@ -12,10 +12,10 @@
     <div class="news-list">
         <?php foreach ($news as $n): ?>
             <article class="news-item">
-                <div class="news-item__date"><?= date('d.m.Y', strtotime($n->date)); ?></div>
+                <span class="news-item__date"><?= date('d.m.Y', strtotime($n->date)); ?></span>
                 <h3 class="news-item__title"><?= $n->title; ?></h3>
                 <div class="news-item__text"><?= $n->announce; ?></div>
-                <a class="news-item__link" href="news/<?= $n->id ?>">
+                <a class="news-item__link" href="/news/<?= $n->id ?>?return_url='<?=urlencode($_SERVER['REQUEST_URI'])?>'">
                     <span class="news-item__link__text">
                         подробнее
                     </span>
@@ -32,7 +32,7 @@
         <div class="pagination">
             <?php if ($pagination->getPrevious()): ?>
                 <a class="pagination__link pagination__link_arrow" href="/page/<?= $pagination->getPrevious() ?>">
-                <svg class="pagination__link__svg pagination__link__svg_reverse" viewBox="0 0 16.763 13.322" ><path d="M13.34 5.66 9.39 1.71a.99.99 0 0 1 0-1.42.996.996 0 0 1 1.41 0l5.66 5.66c.4.39.4 1.02 0 1.41l-5.66 5.66c-.39.4-1.01.4-1.41 0-.4-.4-.4-1.02 0-1.41l3.95-3.95H1c-.57 0-1-.44-1-1s.43-1 1-1h12.34Z"/></svg>
+                <svg class="pagination__link__svg svg-reverse" viewBox="0 0 16.763 13.322" ><path d="M13.34 5.66 9.39 1.71a.99.99 0 0 1 0-1.42.996.996 0 0 1 1.41 0l5.66 5.66c.4.39.4 1.02 0 1.41l-5.66 5.66c-.39.4-1.01.4-1.41 0-.4-.4-.4-1.02 0-1.41l3.95-3.95H1c-.57 0-1-.44-1-1s.43-1 1-1h12.34Z"/></svg>
                 </a>
             <?php endif; ?>
 

@@ -7,6 +7,7 @@
 		{
 			$this->add('/', 'NewsController', 'index');
 			$this->add('/page/(\d+)', 'NewsController', 'index');
+			$this->add('/news/(\d+)', 'NewsController', 'show');
 		}
 
 		public function add($url, $controller, $method)

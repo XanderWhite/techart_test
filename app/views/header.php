@@ -1,6 +1,6 @@
 <header class="header">
 	<div class="header__inner container">
-   <div class="logo">
+   <a class="logo" href="/">
 
 <svg class="logo__svg" viewBox="0 0 93 65.9999">
 	<defs>
@@ -16,7 +16,7 @@
 Галактический
 вестник
 </span>
-   </div>
+</a>
    </div>
 </header>
 

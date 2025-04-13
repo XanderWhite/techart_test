@@ -25,5 +25,8 @@ class NewsController extends Controller
 		$this->view->generate('mainPage.php', ['news' => $news, 'lastNews' => $lastNews[0] ?? null, 'pagination' => $pagination]);
 	}
 
-	function show($id) {}
+	function show($id) {
+		$news = $this->model->getNewsById($id);
+		$this->view->generate('detailPage.php', ['news' => $news]);
+	}
 }

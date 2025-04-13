@@ -30,4 +30,12 @@ class News
         $data = $this->db->getAll($result);
         return (int) $data[0]->total;
     }
+
+    public function getNewsById($id)
+    {
+        $sql = "SELECT * FROM news WHERE id = '$id'";
+        $q =  $this->db->query($sql);
+        $data = $this->db->getAll($q);
+        return $data[0];
+    }
 }
