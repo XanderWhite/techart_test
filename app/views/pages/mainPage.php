@@ -2,7 +2,9 @@
     <div class="last-news" style="background: url('/assets/images/<?= $lastNews->image ?>') no-repeat center / cover;">
         <div class="last-news__inner container">
 
-            <h2 class="last-news__title"> <a href="/news/<?= $lastNews->id ?>?return_url='<?= urlencode($_SERVER['REQUEST_URI']) ?>'"><?= $lastNews->title ?></a></h2>
+            <a class="last-news__title-link" href="/news/<?= $lastNews->id ?>?return_url='<?= urlencode($_SERVER['REQUEST_URI']) ?>'">
+                <h2 class="last-news__title"> <?= $lastNews->title ?></h2>
+            </a>
             <div class="last-news__text"><?= $lastNews->announce ?></div>
         </div>
     </div>
@@ -32,8 +34,8 @@
     <?php if (isset($pagination)) : ?>
         <div class="pagination">
             <?php if ($pagination->getPrevious()): ?>
-                <a class="pagination__link pagination__link_arrow" href="/page/<?= $pagination->getPrevious() ?>">
-                    <svg class="pagination__link__svg svg-reverse" viewBox="0 0 16.763 13.322">
+                <a class="pagination__link pagination__link_arrow reverse" href="/page/<?= $pagination->getPrevious() ?>">
+                    <svg class="pagination__link__svg" viewBox="0 0 16.763 13.322">
                         <path d="M13.34 5.66 9.39 1.71a.99.99 0 0 1 0-1.42.996.996 0 0 1 1.41 0l5.66 5.66c.4.39.4 1.02 0 1.41l-5.66 5.66c-.39.4-1.01.4-1.41 0-.4-.4-.4-1.02 0-1.41l3.95-3.95H1c-.57 0-1-.44-1-1s.43-1 1-1h12.34Z" />
                     </svg>
                 </a>
