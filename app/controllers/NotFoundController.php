@@ -13,5 +13,8 @@ class NotFoundController extends Controller
 		$this->view->generate('notFoundPage.php');
 	}
 
-	public function show($id) {}
+	public function show($id)
+	{
+		$this->index();
+	}
 }
