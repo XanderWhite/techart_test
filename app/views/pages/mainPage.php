@@ -1,7 +1,8 @@
 <?php if (isset($lastNews)) : ?>
     <div class="last-news" style="background: url('/assets/images/<?= $lastNews->image ?>') no-repeat center / cover;">
         <div class="last-news__inner container">
-            <h2 class="last-news__title"><?= $lastNews->title ?></h2>
+
+            <h2 class="last-news__title"> <a href="/news/<?= $lastNews->id ?>?return_url='<?= urlencode($_SERVER['REQUEST_URI']) ?>'"><?= $lastNews->title ?></a></h2>
             <div class="last-news__text"><?= $lastNews->announce ?></div>
         </div>
     </div>

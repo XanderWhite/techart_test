@@ -18,7 +18,7 @@ class NewsController extends Controller
 		$offset = ($page - 1) * $limit;
 		$news = $this->model->getNews($limit, $offset);
 
-		$this->IsEmptyNews($news);
+		$this->redirectIfEmpty($news);
 
 		$totalNews = $this->model->getTotalNews();
 		$totalPages = ceil($totalNews / $limit);
@@ -30,11 +30,11 @@ class NewsController extends Controller
 
 	function show($id) {
 		$news = $this->model->getNewsById($id);
-		$this->IsEmptyNews($news);
+		$this->redirectIfEmpty($news);
 		$this->view->generate('detailPage.php', ['news' => $news]);
 	}
 
-	function IsEmptyNews($news){
+	function redirectIfEmpty($news){
 		if (empty($news)) {
             Route::load404();
             return;

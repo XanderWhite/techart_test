@@ -38,9 +38,9 @@
 				}
 			}
 
-			$self::load404();
+			self::load404();
 		}
-		
+
 		public static function load404()
 		{
 			header("HTTP/1.0 404 Not Found");

@@ -78,7 +78,7 @@
 	min-height: clamp(25rem, 21.572rem + 15.67vw, 40.375rem);
 	display: flex;
 	flex-direction: column;
-	justify-news-detail-section__content: center;
+	justify-content: center;
 
 	color: #fff;
 }
@@ -303,6 +303,15 @@
 	display: flex;
 	flex-direction: column;
 	gap: 22px;
+}
+
+.not-found-section{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 /* ============================= */
