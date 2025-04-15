@@ -38,8 +38,16 @@
 				}
 			}
 
+			$self::load404();
+		}
+		
+		public static function load404()
+		{
 			header("HTTP/1.0 404 Not Found");
-			echo '404 Page Not Found';
+			$controllerFile = './app/controllers/NotFoundController.php';
+			require_once $controllerFile;
+			$controller = new NotFoundController();
+			$controller->index();
 			exit;
 		}
 	}

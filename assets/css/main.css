@@ -78,7 +78,7 @@
 	min-height: clamp(25rem, 21.572rem + 15.67vw, 40.375rem);
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-news-detail-section__content: center;
 
 	color: #fff;
 }
@@ -130,12 +130,12 @@
 	gap: 30px;
 }
 
-.news-item:hover .news-item__title,
-.news-item__title.active {
+.news-item:hover .news-title,
+.news-title.active {
 	color: rgb(132, 24, 68);
 }
 
-.news-item__date {
+.news-date {
 	align-self: flex-start;
 	padding: 6px 18px;
 
@@ -147,8 +147,8 @@
 	line-height: 22px;
 }
 
-.news-item__title,
-.news-item__title p {
+.news-title,
+.news-title p {
 	font-family: "OpenSans-SemiBold";
 	font-size: 32px;
 	line-height: 44px;
@@ -157,10 +157,10 @@
 	transition: 0.3s;
 }
 
-.news-item__text {
+.news-text {
 	flex-grow: 1;
 }
-.news-item__link {
+.news-link {
 	align-self: flex-start;
 	padding: 16px 40px;
 	display: flex;
@@ -173,17 +173,17 @@
 	transition: 0.3s;
 }
 
-.news-item__link:hover {
+.news-link:hover {
 	background: rgb(132, 24, 68);
 }
-.news-item__link:hover .news-item__link__text {
+.news-link:hover .news-link__text {
 	color: #fff;
 }
-.news-item__link:hover .news-item__link__svg {
+.news-link:hover .news-link__svg {
 	fill: #fff;
 }
 
-.news-item__link__text {
+.news-link__text {
 	color: rgb(132, 24, 68);
 	font-family: "OpenSans-SemiBold";
 	font-size: 16px;
@@ -193,7 +193,7 @@
 
 	transition: 0.3s;
 }
-.news-item__link__svg {
+.news-link__svg {
 	width: 25px;
 	height: 13.5px;
 	fill: rgb(132, 24, 68);
