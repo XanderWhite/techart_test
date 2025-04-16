@@ -1,14 +1,14 @@
 <div class="crumbs container">
     <a class="crumbs__item crumbs__item_link" href="/">Главная</a>
     <span class="crumbs__item">/</span>
-    <span class="crumbs__item active"><?= $news->title ?></span>
+    <span class="crumbs__item active"><?=htmlspecialchars( $news->title) ?></span>
 </div>
 
 <section class="news-detail-section container">
-    <h2 class="news-detail-section__title"><?= $news->title ?></h2>
+    <h2 class="news-detail-section__title"><?= htmlspecialchars($news->title) ?></h2>
     <div class="news-detail-section__content">
         <div class="article news-detail-section__content__block">
-            <span class="news-date"><?= date('d.m.Y', strtotime($news->date)); ?></span>
+            <time datetime="<?=htmlspecialchars($news->date)?>" class="news-date"><?= date('d.m.Y', strtotime($news->date)); ?></time>
             <div class="news-title active">
                 <?= $news->announce; ?>
             </div>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="news-detail-section__content__block">
-            <img class="news-detail-section__image " src="/assets/images/<?= $news->image ?>" alt="image">
+            <img class="news-detail-section__image " src="/assets/images/<?= htmlspecialchars($news->image) ?>" alt="картинка">
         </div>
     </div>
 
