@@ -2,26 +2,25 @@ name: Deploy to Hosting
 
 on:
   push:
-    branches: [ main ]  # Триггер только для ветки main
+    branches: [ main ]
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Использует свежий Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
-      # Шаг 1: Получение кода из репозитория
       - name: Checkout code
-        uses: actions/checkout@v4  # Версия v4 - самая стабильная
+        uses: actions/checkout@v4
 
-      # Шаг 2: Загрузка файлов на хостинг
-      - name: Upload files via SCP
-        uses: appleboy/scp-action@v0.1.4  # Фиксированная версия вместо master
+      - name: Upload files via SCP (Password auth)
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "./*"  # Все файлы из корня репозитория
+          source: "./*"
           target: "/xander"
-          strip_components: 1  # Игнорирует первую папку в пути
-          overwrite: true  # Перезаписывает существующие файлы
+          overwrite: true
+          use_insecure_cipher: true  # Важно для некоторых конфигураций
+          timeout: 60s  # Увеличиваем таймаут
