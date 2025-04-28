@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           source: "./*"  # Все файлы из корня репозитория
-          target: "/xanderwhite_ru/public_html"
+          target: "/xander"
           strip_components: 1  # Игнорирует первую папку в пути
           overwrite: true  # Перезаписывает существующие файлы
-          recursive: true  # Копирует вложенные папки
+        rm: true  # Удаляет существующие файлы перед загрузкой
