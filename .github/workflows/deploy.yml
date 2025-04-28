@@ -1,17 +1,28 @@
 name: Deploy to Hosting
-on: [push]
+
+on:
+  push:
+    branches: [ main ]  # Триггер только для ветки main
+
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Использует свежий Ubuntu
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Upload files via SSH (password)
-        uses: appleboy/scp-action@master
+      # Шаг 1: Получение кода из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4  # Версия v4 - самая стабильная
+
+      # Шаг 2: Загрузка файлов на хостинг
+      - name: Upload files via SCP
+        uses: appleboy/scp-action@v0.1.4  # Фиксированная версия вместо master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "./*"
+          source: "./*"  # Все файлы из корня репозитория
           target: "/xanderwhite_ru/public_html"
-          strip_components: 1  # Удаляет лишние вложенные папки при копировании
+          strip_components: 1  # Игнорирует первую папку в пути
+          overwrite: true  # Перезаписывает существующие файлы
+          recursive: true  # Копирует вложенные папки
