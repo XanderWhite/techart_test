@@ -1,8 +1,11 @@
 <?php
 
-abstract class Controller {
+namespace App\Controllers;
 
-	public $model;
+use App\View;
+
+abstract class Controller
+{
 	public $view;
 
 	protected function __construct()
@@ -11,5 +14,4 @@ abstract class Controller {
 	}
 
 	abstract function index();
-	abstract function show($id);
 }

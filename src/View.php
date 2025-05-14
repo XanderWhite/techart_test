@@ -1,11 +1,13 @@
 <?php
+
+namespace App;
+
 class View
 {
 	function generate($contentView, $data = [])
 	{
 		extract($data);
 
-		require_once './app/views/template.php';
+		require_once './resources/views/template.php';
 	}
 }
-?>

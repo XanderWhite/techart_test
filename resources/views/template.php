@@ -14,11 +14,11 @@
     <div class="page">
         <h1 class="visually-hidden">Галактический
             вестник</h1>
-        <?php include './app/views/header.php'; ?>
+        <?php include './resources/views/header.php'; ?>
         <main class="main">
-            <?php include './app/views/pages/' . $contentView; ?>
+            <?php include './resources/views/pages/' . $contentView; ?>
         </main>
-        <?php include './app/views/footer.php'; ?>
+        <?php include './resources/views/footer.php'; ?>
     </div>
 </body>
 

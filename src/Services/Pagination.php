@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Services;
+
 class Pagination
 {
     private $current;

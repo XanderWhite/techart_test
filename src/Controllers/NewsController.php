@@ -1,15 +1,20 @@
 <?php
-require_once __DIR__ . '/../models/News.php';
-require_once __DIR__ . '/../core/Pagination.php';
+
+namespace App\Controllers;
+
+use App\Models\News;
+use App\Services\Pagination;
+use App\Core\Route;
 
 class NewsController extends Controller
 {
+	public $model;
 
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->model = new News;
+		$this->model = new News();
 	}
 
 	function index($page = 1)
@@ -18,26 +23,27 @@ class NewsController extends Controller
 		$offset = ($page - 1) * $limit;
 		$news = $this->model->getNews($limit, $offset);
 
-		$this->redirectIfEmpty($news);
+		$this->show404IfEmpty($news);
 
 		$totalNews = $this->model->getTotalNews();
 		$totalPages = ceil($totalNews / $limit);
 		$lastNews = $this->model->getLast();
 		$pagination = new Pagination($page, $totalPages);
-
-		$this->view->generate('mainPage.php', ['news' => $news, 'lastNews' => $lastNews[0] ?? null, 'pagination' => $pagination]);
+		$this->view->generate('mainPage.php', ['news' => $news, 'lastNews' => $lastNews ?? null, 'pagination' => $pagination]);
 	}
 
-	function show($id) {
+	function show($id)
+	{
 		$news = $this->model->getNewsById($id);
-		$this->redirectIfEmpty($news);
+		$this->show404IfEmpty($news);
 		$this->view->generate('detailPage.php', ['news' => $news]);
 	}
 
-	function redirectIfEmpty($news){
+	function show404IfEmpty($news)
+	{
 		if (empty($news)) {
-            Route::load404();
-            return;
-        }
+			Route::load404();
+			return;
+		}
 	}
 }

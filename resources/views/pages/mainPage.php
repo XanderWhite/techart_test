@@ -2,7 +2,7 @@
     <div class="last-news" style="background: url('/assets/images/<?= htmlspecialchars($lastNews->image) ?>') no-repeat center / cover;">
         <div class="last-news__inner container">
 
-            <a class="last-news__title-link" href="/news/<?= htmlspecialchars($lastNews->id) ?>?return_url='<?= urlencode($_SERVER['REQUEST_URI']) ?>'">
+            <a class="last-news__title-link" href="/news/<?= htmlspecialchars($lastNews->id) ?>">
                 <h2 class="last-news__title"> <?= htmlspecialchars($lastNews->title) ?></h2>
             </a>
             <div class="last-news__text"><?= $lastNews->announce ?></div>
@@ -15,10 +15,10 @@
     <div class="news-list">
         <?php foreach ($news as $n): ?>
             <article class="news-item">
-            <time datetime="<?=htmlspecialchars($n->date)?>" class="news-date"><?= date('d.m.Y', strtotime($n->date)); ?></time>
+                <time datetime="<?= htmlspecialchars($n->date) ?>" class="news-date"><?= date('d.m.Y', strtotime($n->date)); ?></time>
                 <h3 class="news-title"><?= htmlspecialchars($n->title); ?></h3>
                 <div class="news-text"><?= $n->announce; ?></div>
-                <a class="news-link" href="/news/<?= htmlspecialchars($n->id) ?>?return_url='<?= urlencode($_SERVER['REQUEST_URI']) ?>'">
+                <a class="news-link" href="/news/<?= htmlspecialchars($n->id) ?>">
                     <span class="news-link__text">
                         подробнее
                     </span>

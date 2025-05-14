@@ -1,11 +1,9 @@
 
 <?php
-require_once './Database.php';
-require_once './app/core/View.php';
-require_once './app/core/Route.php';
-require_once './app/core/Controller.php';
+require __DIR__ . '/vendor/autoload.php';
 
-$route = new Route();
+use App\Core\Route;
+
+$routesConfig = require __DIR__ . '/config/routes.php';
+$route = new Route($routesConfig);
 $route->start();
-?>
-<!-- new commit 1-->
